@@ -16,7 +16,7 @@ public class RetailPrice {
         prices.put("large",0.50);
     };
 
-    public static double getPrices(String item) {
+    public static double getPrice(String item) {
         return prices.get(item);
     }
 
