@@ -1,6 +1,6 @@
 package edu.badpals.galleygrub;
 
-import edu.badpals.galleygrub.item.RetailPrice;
+import edu.badpals.galleygrub.item.*;
 
 public class GalleyGrub {
     public static void main( String[] args )
@@ -42,6 +42,7 @@ public class GalleyGrub {
          */
 
         System.out.print("\n\t --- GALLEY GRUB ---  \n");
+
         
         Product patty = new Item("Krabby Patty", 1.25);
         display(patty);
@@ -54,5 +55,11 @@ public class GalleyGrub {
         Product soda = new Item("Seafoam Soda", 1.00);
         display(soda);
 
+
+        
+    }
+
+    public static void display(Product item) {
+        System.out.print("\t" + item.toString() + "\n");
     }
 }
