@@ -58,7 +58,6 @@ public class GalleyGrub {
 
 
         
-    }
 
     /**
          * Bubble Bass llega al restaurante
@@ -96,6 +95,7 @@ public class GalleyGrub {
          order.addItem("Seafoam Soda", 1.00);
  
          order.display();
+    }
 
     public static void display(Product item) {
         System.out.print("\t" + item.toString() + "\n");
