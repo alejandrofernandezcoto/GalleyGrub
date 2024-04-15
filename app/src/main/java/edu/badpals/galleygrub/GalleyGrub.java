@@ -1,6 +1,7 @@
 package edu.badpals.galleygrub;
 
 import edu.badpals.galleygrub.item.*;
+import edu.badpals.galleygrub.order.*;
 
 public class GalleyGrub {
     public static void main( String[] args )
@@ -58,6 +59,43 @@ public class GalleyGrub {
 
         
     }
+
+    /**
+         * Bubble Bass llega al restaurante
+         * y hace una comanda muy simple.
+         * Quiere todo lo que hay en el menu
+         * en su tamaño estandar y sin 
+         * condimentos extras.
+         * 
+         * Squidward Tentacles crea la comanda
+         * y la muestra en la pantalla para que
+         * el cliente le de el visto bueno
+         * antes de generar el recibo con la factura.
+         * 
+         * 
+         * OPCIONAL:
+         * Puesto que a lo largo del dia van a generarse muchos objetos
+         * siempre del mismo tipo, vamos a ahorrar memoria.
+         * 
+         * Implementa la clase ItemFactory siguiendo los casos test
+         * que se proporcionan.
+         * 
+         * ItemFactory crea el Item que le pides,
+         * lo guarda en un diccionario y lo devuelve.
+         * Cuando solicitas crear de nuevo ese Item 
+         * te devuelve la misma referencia al objeto que has creado antes,
+         * ahorrando asi memoria.
+         */
+
+         Comanda order = new Order();
+
+         order.addItem("Krabby Patty", 1.25);
+         order.addItem("Coral Bits", 1.00);
+         order.addItem("Kelp Rings", 1.50);
+         order.addItem("Golden Loaf", 2.00);
+         order.addItem("Seafoam Soda", 1.00);
+ 
+         order.display();
 
     public static void display(Product item) {
         System.out.print("\t" + item.toString() + "\n");
