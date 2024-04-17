@@ -2,9 +2,9 @@ package edu.badpals.galleygrub.item;
 
 public class Item implements Product{
 
-    String name;
+    String name = "";
     Double price;
-    String extra;
+    String extra = "";
 
     public Item(String name, Double price){
         this.name = name;

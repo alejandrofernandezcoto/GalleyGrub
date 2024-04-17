@@ -2,6 +2,8 @@ package edu.badpals.galleygrub;
 
 import edu.badpals.galleygrub.item.*;
 import edu.badpals.galleygrub.order.*;
+import edu.badpals.galleygrub.receipt.*;
+import edu.badpals.galleygrub.extras.*;
 
 public class GalleyGrub {
     public static void main( String[] args )
@@ -95,6 +97,106 @@ public class GalleyGrub {
          order.addItem("Seafoam Soda", 1.00);
  
          order.display();
+    
+
+     /**
+         * Squidward Tentacles genera el recibo,
+         * la app calcula el importe total de la comanda
+         * y lo muestra en pantalla.
+         */
+
+        Ticket receipt = new Receipt(order);
+        receipt.total();
+        receipt.print();
+
+        /**
+         * Eugene H. Krabs quiere obtener un margen
+         * de beneficio extra y decide cargar
+         * por los extras.
+         * 
+         * Modifica el tipo Item para incluir los extras.
+         * 
+         * Refactoriza el metodo toString() de Item
+         * para mostrar el ingrediente extra.
+         * 
+         * NO ACTUALICES EL PRECIO DEL ITEM
+         * con el cargo extra 
+         * pues eso lo haremos con otro componente. 
+         */
+
+        System.out.print("\n\t --- GALLEY GRUB ---  \n");
+
+        patty = new Item("Krabby Patty", 1.25, "cheese");
+        display(patty);
+        bits = new Item("Coral Bits", 1.00, "medium");
+        display(bits);
+        rings = new Item("Kelp Rings", 1.50, "sauce");
+        display(rings);
+        loaf = new Item("Golden Loaf", 2.00, "sauce");
+        display(loaf);
+        soda = new Item("Seafoam Soda", 1.00, "large");
+        display(soda);
+
+         /**
+         * Buble Fish sigue zampando
+         * y realiza una comanda cargada
+         * de extras.
+         */
+
+         order = new Order();
+
+         order.addItem("Krabby Patty", 1.25, "cheese");
+         order.addItem("Coral Bits", 1.00);
+         order.addItem("Kelp Rings", 1.50, "sauce");
+         order.addItem("Golden Loaf", 2.00, "sauce");
+         order.addItem("Seafoam Soda", 1.00, "large");
+         order.addItem("Coral Bits", 1.00, "large");
+ 
+         // Utiliza el diccionario Prices para incluir
+         // el precio de los extras en la salida por consola.
+         order.display();
+         
+ 
+         /**
+          * Define el importe a cargar por cada extra.
+          * 
+          * Configura los tipos de Extras:
+          *  - extra Cheese +0.25
+          *  - extra sauce +0.50
+          *  - size medium +0.25
+          *  - size large +0.50
+          * 
+          * Sigue los casos test del paquete Extras
+          * para implementar 4 clases que se encargan
+          * de sumar el precio base de los Items
+          * y de los extras para calcular el precio
+          * total de Order (la comanda).
+          * 
+          * El precio total de la comanda se guarda en Order.
+          */
+ 
+         Extra regular = new Regular(); // suma el precio base
+         Extra cheese = new CheeseExtra(); // suma el precio del extra cheese
+         Extra sauce = new SauceExtra(); // suma el precio de sauce
+         Extra size = new SizeLargeExtra(); // suma el precio del tamanho Large
+ 
+         regular.setNextExtra(cheese);
+         cheese.setNextExtra(sauce);
+         sauce.setNextExtra(size);
+ 
+         /**
+          * Squidward Tentacles genera el recibo,
+          * la app calcula el importe total de la comanda
+          * y lo muestra en pantalla.
+          */
+ 
+         System.out.print("\n\t --- PRINTIG RECEIPT BIPBIPBIP ---  \n");
+ 
+         Ticket receiptExtra = new Receipt(order);
+         receiptExtra.setChain(regular);
+ 
+         receiptExtra.total();
+         receiptExtra.print();
     }
 
     public static void display(Product item) {
